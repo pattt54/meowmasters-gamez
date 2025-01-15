@@ -20,6 +20,33 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .content {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
         .search-bar {
             margin: 20px 0;
         }
@@ -97,12 +124,23 @@
 
 <body>
     <header>
-        <h1>Welcome to Meowmasters Games</h1>
+        <h1>Welcome to Meowmasters</h1>
+        <div class="tabs">
+            <div class="tab" onclick="showTab('games')">Meowmasters Games</div>
+            <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
+        </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
         </div>
     </header>
-    <div class="game-container" id="gameContainer"></div>
+    <div id="games" class="content active">
+        <div class="game-container" id="gameContainer"></div>
+    </div>
+    <div id="library" class="content">
+        <h2>Meowmasters Library</h2>
+        <p>Welcome to the Meowmasters Library. Browse through our collection of resources.</p>
+        <img src="Meowmasterthink.jpeg" alt="Meowmaster Think" style="width:300px;">
+    </div>
 
     <div id="gameSection">
         <button class="close-btn" onclick="closeGame()">Close</button>
@@ -156,6 +194,14 @@
             const iframe = document.getElementById('gameFrame');
             iframe.src = ''; 
             document.getElementById('gameSection').style.display = 'none'; 
+        }
+
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
         }
 
         window.onload = fetchGames;
