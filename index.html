@@ -127,8 +127,14 @@
         .meow-item {
             border: 2px solid white;
             border-radius: 10px;
-            margin: 10px 0;
+            margin: 20px 0; /* Added space between items */
             padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s; /* Added transition for hover effects */
+        }
+
+        .meow-item:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Box shadow effect on hover */
         }
 
         .meow-title {
@@ -140,6 +146,10 @@
             width: 300px;
             border: 2px solid white;
             border-radius: 10px;
+        }
+
+        .center {
+            text-align: center;
         }
     </style>
 </head>
@@ -159,10 +169,10 @@
         <div class="game-container" id="gameContainer"></div>
     </div>
     <div id="library" class="content">
-        <h2>Meowmasters Library</h2>
-        <h3>Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
-        <img src="assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink">
-        <p>Every once in a while I will post another Meow file, here are all of them to date:</p>
+        <h2 class="center">Meowmasters Library</h2>
+        <h3 class="center">Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
+        <img src="assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink center">
+        <p class="center">Every once in a while I will post another Meow file, here are all of them to date:</p>
         <ul>
             <li class="meow-item"><span class="meow-title">Meow I:</span> (Waterfox) permanently down</li>
             <li class="meow-item"><span class="meow-title">Meow II:</span> Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
