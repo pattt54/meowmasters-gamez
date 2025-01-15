@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Tetris",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/b/b9/Tetris_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://tetris.com/play-tetris"
+    },
+    {
+        "title": "2048",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/5/5e/2048_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://play2048.co/"
+    },
+    {
+        "title": "Snake",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/6/6f/Snake_game.png",
+        "url": "https://www.webproxy.co/proxy/https://playsnake.org/"
+    },
+    {
+        "title": "Flappy Bird",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/0/0c/Flappy_Bird_logo.png",
+        "url": "https://www.webproxy.co/proxy/https://flappybird.io/"
+    },
+    {
+        "title": "Pac-Man",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/5/5a/Pac-Man_Logo.svg",
+        "url": "https://www.webproxy.co/proxy/https://www.pacman.com/en/play-pacman"
+    },
+    {
+        "title": "Doodle Jump",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/0/0e/Doodle_Jump_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://www.doodlejump.com/"
+    },
+    {
+        "title": "Cut the Rope",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/3/3d/Cut_the_Rope_logo.png",
+        "url": "https://www.webproxy.co/proxy/https://cuttherope.net/"
+    },
+    {
+        "title": "Bubble Shooter",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/6/6b/Bubble_Shooter_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://www.bubbleshooter.com/"
+    },
+    {
+        "title": "Among Us",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/3/3a/Among_Us_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://www.apptopia.com/games/among-us"
+    },
+    {
+        "title": "Crossy Road",
+        "image": "https://www.webproxy.co/proxy/https://upload.wikimedia.org/wikipedia/en/4/4c/Crossy_Road_Logo.png",
+        "url": "https://www.webproxy.co/proxy/https://www.crossyroad.com/"
+    }
+]
