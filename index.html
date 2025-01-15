@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -121,13 +120,13 @@
         }
     </style>
 </head>
-
 <body>
     <header>
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
             <div class="tab" onclick="showTab('games')">Meowmasters Games</div>
             <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
+            <div class="tab" onclick="showTab('links')">Meowmasters Links</div>
         </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
@@ -140,59 +139,34 @@
         <h2>Meowmasters Library</h2>
         <h3>Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
         <img src="Meowmasterthink.jpeg" alt="Meowmaster Think" style="width:300px;">
-        <p>every once in a while I will post another Meow file, here are all of them to date:</p>
-        <p2>Meow I: (Waterfox) permanently down</p2>
- 
-
-
-<p>Meow II: Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
-(GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target= "blank" href= "https://heroicgameslauncher.com/">THIS WEBSITE</a>) 
-How to use it?
-Go <a target="blank href="https://steamunlocked.net/">here</a> to download any Steam game for free. Expand the Zip file and then find the .exe file. Go to Heroic and press add game, then press select executable and find your .exe file for the game. It should work with most games (1 in 3 chance it doesn't work). Email me with any questions you have (it may seem complex at first).
- Multiplayer does not work from steam unlocked.
-Sometimes an error message comes up, usually it still works and you can X out of it. 
-<a target="blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
-These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my game library (work in progress).</p>
-
-
-
-<p2>Meow III: Browser, pretty bad to use not recommended (absolute dogwater): Meow III file</p2>
-
-
-
-<p>Meow IV: Minecraft launcher: 
-The last time I tried using this it didn't work on our laptops.You can use Eaglecraft on one of many unblocked games sites</p>
-
-
-<p2>Meow V: one of the best browsers that I have ever used, recommended. 
-Meow V file.</p2>
-
-
-
-<p>Meow VI: stream movies and TV shows you want with this app.
-Meow VI file
-How to use it? 
-Go to this google doc:</p>
-
-
-
-<p2>Meow VII: Working version of Steam, you can play windows games with multiplayer. After a little while of using this, I found that it is laggy, most games dont work with it (literally almost every game I downloaded besides 1), and did not work 100% of the time. Therefore I am not finishing the explanation on how to get it up, because it is very detailed and a long process. I do have other ways of getting games as well as a game library (see Meow X). This also would be considered bypassing Trinity's filters (because Steam is blocked).</p2> 
-
-
-
-<p>Meow VIII: how to play larger games: Tutorial</p>
- 
-
-<p>Meow IX:how to play PolyTrack, without a browser!!
-Just download and run this file (it is the app version, it takes a little while to load): PolyTrack file</p>
-
-
-<p2>Meow X: Meowmasters game library, fun games for open blocks (do not play during class): 
-Game Library</p2>
-
-
-<p>MeowXI: Good tool for note taking and flashcard making: 
-Meow XI file</p>
+        <p>Every once in a while I will post another Meow file, here are all of them to date:</p>
+        <ul>
+            <li>Meow I: (Waterfox) permanently down</li>
+            <li>Meow II: Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
+                (GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target="_blank" href="https://heroicgameslauncher.com/">THIS WEBSITE</a>)
+                How to use it?
+                Go <a target="_blank" href="https://steamunlocked.net/">here</a> to download any Steam game for free. Expand the Zip file and then find the .exe file. Go to Heroic and press add game, then press select .exe file.
+                Multiplayer does not work from steam unlocked.
+                Sometimes an error message comes up, usually it still works and you can X out of it.
+                <a target="_blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
+                These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my game library (work in progress).
+            </li>
+            <li>Meow III: Browser, pretty bad to use not recommended (absolute dogwater): Meow III file</li>
+            <li>Meow IV: Minecraft launcher:
+                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
+            </li>
+            <li>Meow V: one of the best browsers that I have ever used, recommended. Meow V file.</li>
+            <li>Meow VI: stream movies and TV shows you want with this app. Meow VI file How to use it? Go to this google doc:</li>
+            <li>Meow VII: Working version of Steam, you can play windows games with multiplayer. After a little while of using this, I found that it is laggy, most games dont work with it (literally almost every game).</li>
+            <li>Meow VIII: how to play larger games: Tutorial</li>
+            <li>Meow IX: how to play PolyTrack, without a browser!! Just download and run this file (it is the app version, it takes a little while to load): PolyTrack file</li>
+            <li>Meow X: Meowmasters game library, fun games for open blocks (do not play during class): Game Library</li>
+            <li>MeowXI: Good tool for note taking and flashcard making: Meow XI file</li>
+        </ul>
+    </div>
+    <div id="links" class="content">
+        <h2>Meowmasters Links</h2>
+        <p>Useful links and resources related to Meowmasters.</p>
     </div>
 
     <div id="gameSection">
@@ -218,7 +192,7 @@ Meow XI file</p>
 
         function displayGames(games) {
             const gameContainer = document.getElementById('gameContainer');
-            gameContainer.innerHTML = ''; 
+            gameContainer.innerHTML = '';
 
             games.forEach(game => {
                 const gameEmbed = document.createElement('div');
@@ -239,14 +213,14 @@ Meow XI file</p>
 
         function openGame(url) {
             const iframe = document.getElementById('gameFrame');
-            iframe.src = url; 
+            iframe.src = url;
             document.getElementById('gameSection').style.display = 'block';
         }
 
         function closeGame() {
             const iframe = document.getElementById('gameFrame');
-            iframe.src = ''; 
-            document.getElementById('gameSection').style.display = 'none'; 
+            iframe.src = '';
+            document.getElementById('gameSection').style.display = 'none';
         }
 
         function showTab(tabId) {
@@ -260,5 +234,4 @@ Meow XI file</p>
         window.onload = fetchGames;
     </script>
 </body>
-
 </html>
