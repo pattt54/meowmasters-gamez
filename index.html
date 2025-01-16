@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: left; /* Align text to the left */
+            overflow: hidden; /* Prevent scrollbars from appearing */
         }
 
         header {
@@ -206,6 +207,25 @@
                 transform: translateX(-100vw);
             }
         }
+
+        .lightning {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: rgba(255, 0, 255, 0.8); /* Bright emissive purple */
+            opacity: 0;
+            animation: lightningStrike 3s infinite;
+            z-index: 0;
+        }
+
+        @keyframes lightningStrike {
+            0%, 80%, 100% {
+                opacity: 0;
+            }
+            85% {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -267,6 +287,10 @@
     <div class="blob blob1"></div>
     <div class="blob blob2"></div>
     <div class="blob blob3"></div>
+
+    <div class="lightning" id="lightning1"></div>
+    <div class="lightning" id="lightning2"></div>
+    <div class="lightning" id="lightning3"></div>
 
     <script>
         let allGames = [];
