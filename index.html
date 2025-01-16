@@ -12,12 +12,15 @@
             margin: 0;
             padding: 0;
             text-align: left; /* Align text to the left */
+            overflow: hidden; /* Prevent scrollbars from appearing */
         }
 
         header {
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure header stays above the blobs */
         }
 
         .tabs {
@@ -41,6 +44,8 @@
 
         .content {
             display: none;
+            position: relative;
+            z-index: 1; /* Ensure content stays above the blobs */
         }
 
         .active {
@@ -163,6 +168,45 @@
         .center {
             text-align: center;
         }
+
+        .blob {
+            position: absolute;
+            background: rgba(90, 0, 140, 0.5); /* Darker purple shade */
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: moveBlobs 20s linear infinite;
+            z-index: 0; /* Ensure blobs are behind other elements */
+        }
+
+        .blob1 {
+            width: 200px;
+            height: 200px;
+            top: 200px;
+            left: 0;
+        }
+
+        .blob2 {
+            width: 300px;
+            height: 300px;
+            top: 400px;
+            right: 0;
+        }
+
+        .blob3 {
+            width: 250px;
+            height: 250px;
+            top: 600px;
+            left: 0;
+        }
+
+        @keyframes moveBlobs {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100vw);
+            }
+        }
     </style>
 </head>
 <body>
@@ -220,6 +264,10 @@
         <button class="close-btn" onclick="closeGame()">Close</button>
         <iframe id="gameFrame"></iframe>
     </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
 
     <script>
         let allGames = [];
