@@ -171,7 +171,7 @@
         .blob {
             position: absolute;
             background: rgba(90, 0, 140, 0.5); /* Darker purple shade */
-            border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; /* Cloud-like shape */
+            border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%; /* Fluffy cotton candy shape */
             opacity: 0.7;
             animation: moveBlobs 30s linear infinite;
             z-index: 0; /* Ensure blobs are behind other elements */
@@ -213,28 +213,28 @@
             height: 100px;
             background: rgba(255, 0, 255, 1); /* Bright emissive purple */
             opacity: 0;
-            animation: lightningStrike 5s infinite;
+            animation: lightningStrike 3s infinite;
             z-index: 0;
         }
 
         @keyframes lightningStrike {
-            0%, 90%, 100% {
+            0%, 97%, 100% {
                 opacity: 0;
             }
-            92%, 94%, 96% {
+            98%, 99% {
                 opacity: 1;
             }
         }
 
         .illuminate {
-            animation: illuminatePage 5s infinite;
+            animation: illuminatePage 3s infinite;
         }
 
         @keyframes illuminatePage {
-            0%, 90%, 100% {
+            0%, 97%, 100% {
                 background-color: #6a0dad;
             }
-            92%, 94%, 96% {
+            98%, 99% {
                 background-color: #d8b4fe;
             }
         }
