@@ -12,7 +12,6 @@
             margin: 0;
             padding: 0;
             text-align: left; /* Align text to the left */
-            overflow: hidden; /* Prevent scrollbars from appearing */
         }
 
         header {
@@ -174,27 +173,27 @@
             background: rgba(90, 0, 140, 0.5); /* Darker purple shade */
             border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; /* Cloud-like shape */
             opacity: 0.7;
-            animation: moveBlobs 20s linear infinite;
+            animation: moveBlobs 30s linear infinite;
             z-index: 0; /* Ensure blobs are behind other elements */
         }
 
         .blob1 {
-            width: 200px;
-            height: 150px;
+            width: 400px;
+            height: 300px;
             top: 200px;
             left: 0;
         }
 
         .blob2 {
-            width: 300px;
-            height: 200px;
+            width: 600px;
+            height: 400px;
             top: 400px;
             right: 0;
         }
 
         .blob3 {
-            width: 250px;
-            height: 180px;
+            width: 500px;
+            height: 350px;
             top: 600px;
             left: 0;
         }
@@ -212,23 +211,36 @@
             position: absolute;
             width: 2px;
             height: 100px;
-            background: rgba(255, 0, 255, 0.8); /* Bright emissive purple */
+            background: rgba(255, 0, 255, 1); /* Bright emissive purple */
             opacity: 0;
-            animation: lightningStrike 3s infinite;
+            animation: lightningStrike 5s infinite;
             z-index: 0;
         }
 
         @keyframes lightningStrike {
-            0%, 80%, 100% {
+            0%, 90%, 100% {
                 opacity: 0;
             }
-            85% {
+            92%, 94%, 96% {
                 opacity: 1;
+            }
+        }
+
+        .illuminate {
+            animation: illuminatePage 5s infinite;
+        }
+
+        @keyframes illuminatePage {
+            0%, 90%, 100% {
+                background-color: #6a0dad;
+            }
+            92%, 94%, 96% {
+                background-color: #d8b4fe;
             }
         }
     </style>
 </head>
-<body>
+<body class="illuminate">
     <header>
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
