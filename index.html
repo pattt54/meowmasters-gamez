@@ -5,7 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meowmasters Games</title>
     <style>
-        /* Existing CSS */
+        body {
+            background-color: #6a0dad;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left; /* Align text to the left */
+        }
+
+        header {
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .content {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .game-embed {
+            margin: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .game-embed:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .game-title {
+            margin: 10px 0;
+        }
+
+        #gameSection {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+
+        #gameFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        a {
+            color: #d8b4fe; /* Very whiteish purple */
+        }
+
+        .meow-item {
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 20px 0; /* Added space between items */
+            padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s; /* Added transition for hover effects */
+        }
+
+        .meow-item:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Box shadow effect on hover */
+        }
+
         .meow-title {
             font-weight: bold;
             font-size: 1.2em;
@@ -15,65 +146,10 @@
             width: 300px;
             border: 2px solid white;
             border-radius: 10px;
-            display: block;
-            margin: 0 auto;
-            animation: float 3s ease-in-out infinite;
         }
 
         .center {
             text-align: center;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        body {
-            background: #e0e0ff; /* Light base color */
-            overflow: hidden;
-        }
-
-        @keyframes moveClouds {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .cloud {
-            position: absolute;
-            background: rgba(80, 0, 160, 0.2); /* Darker purple blobs */
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: moveClouds 20s linear infinite;
-        }
-
-        .cloud1 {
-            width: 300px;
-            height: 300px;
-            top: 100px;
-            left: -300px; /* Start offscreen */
-        }
-
-        .cloud2 {
-            width: 200px;
-            height: 200px;
-            top: 300px;
-            left: -200px; /* Start offscreen */
-        }
-
-        .cloud3 {
-            width: 400px;
-            height: 400px;
-            top: 500px;
-            left: -400px; /* Start offscreen */
         }
     </style>
 </head>
@@ -111,11 +187,86 @@
                 These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my gamefile library (work in progress).
             </li>
             <li class="meow-item"><span class="meow-title">Meow III:</span> Browser, pretty bad to use not recommended (absolute dogwater): <a target="blank" href="https://drive.google.com/file/d/1RBr4YtbCA8URHb0K_gMqGwCEdePQMi9h/view">Meow III file</a></li>
+            <li class="meow-item"><span class="meow-title">Meow IV:</span> <a target="blank" href="https://drive.google.com/file/d/1DYgxm6JMannHRAT0fsMqDi2FUW4x5t6E/view">Minecraft launcher</a>:
+                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
+            </li>
+            <li class="meow-item"><span class="meow-title">Meow V:</span> one of the best browsers that I have ever used, recommended. <a target="blank" href="https://drive.google.com/file/d/179A5UCzxki9G37D7IKmgEdlkFy8nDtzQ/view">Meow V file</a>.</li>
+            <li class="meow-item"><span class="meow-title">Meow VI:</span> stream movies and TV shows you want with this app. <a target="blank" href="https://drive.google.com/file/d/1jWnEpjaW_sjxYfBZfqyrsnLnbVndfsuI/view">Meow VI file</a> How to use it? Go to this <a target="blank" href="https://docs.google.com/document/d/1bpiJw-jPFkaCg_2aqu42Mn92cz0GTAwDszv64TuJDhw/edit?tab=t.0">google doc</a></li>
+            <li class="meow-item"><span class="meow-title">Meow VII:</span> Working version of Steam, you can play windows games with multiplayer. After a little while of using this, I found that it is laggy, most games dont work with it (literally almost every game).</li>
+            <li class="meow-item"><span class="meow-title">Meow VIII:</span> how to play larger games: <a target="blank" href="https://docs.google.com/document/d/1vdBtA8GKq1ZhOkiY1rTyDhqb4COwCAtZhbNgtCLGWrg/edit?tab=t.0">Tutorial</a></li>
+            <li class="meow-item"><span class="meow-title">Meow IX:</span> how to play PolyTrack, without a browser!! Just download and run this file (it is the app version, it takes a little while to load): <a target="blank" href="https://drive.google.com/file/d/1h6sIpMRW-pRB6p1OKSet0fyP_JUQLQX8/view">PolyTrack file</a></li>
+            <li class="meow-item"><span class="meow-title">Meow X:</span> Meowmasters game library, fun games for open blocks (do not play during class): <a target="blank" href="https://docs.google.com/document/d/1l9yWTc3fLd-9nWYYLCuPEtOBfPE5N4P3NHeZTbM1yw0/edit?tab=t.0">Game Library</a></li>
+            <li class="meow-item"><span class="meow-title">MeowXI:</span> Good tool for note taking and flashcard making: <a target="blank" href="https://drive.google.com/file/d/1oDNzDDCsi96FlWcBFHYFuhzuC1-S2vlz/view">Meow XI file</a></li>
         </ul>
     </div>
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-    <script src="gameLoader.js"></script>
+    <div id="links" class="content">
+        <h2>Meowmasters Links</h2>
+        <p>Useful links and resources related to Meowmasters.</p>
+    </div>
+
+    <div id="gameSection">
+        <button class="close-btn" onclick="closeGame()">Close</button>
+        <iframe id="gameFrame"></iframe>
+    </div>
+
+    <script>
+        let allGames = [];
+
+        async function fetchGames() {
+            try {
+                const response = await fetch('games.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                allGames = await response.json();
+                displayGames(allGames);
+            } catch (error) {
+                console.error('Error fetching games:', error);
+            }
+        }
+
+        function displayGames(games) {
+            const gameContainer = document.getElementById('gameContainer');
+            gameContainer.innerHTML = '';
+
+            games.forEach(game => {
+                const gameEmbed = document.createElement('div');
+                gameEmbed.className = 'game-embed';
+                gameEmbed.innerHTML = `
+                    <img src="${game.image}" class="game-image" onclick="openGame('${game.url}')" />
+                    <div class="game-title">${game.title}</div>
+                `;
+                gameContainer.appendChild(gameEmbed);
+            });
+        }
+
+        function filterGames() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filteredGames = allGames.filter(game => game.title.toLowerCase().includes(query));
+            displayGames(filteredGames);
+        }
+
+        function openGame(url) {
+            const iframe = document.getElementById('gameFrame');
+            iframe.src = url;
+            document.getElementById('gameSection').style.display = 'block';
+        }
+
+        function closeGame() {
+            const iframe = document.getElementById('gameFrame');
+            iframe.src = '';
+            document.getElementById('gameSection').style.display = 'none';
+        }
+
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        window.onload = fetchGames;
+    </script>
 </body>
 </html>
