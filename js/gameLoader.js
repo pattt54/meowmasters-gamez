@@ -1,6 +1,4 @@
 //this is the script that goes with it if you wanna use it. 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const gameId = urlParams.get('id');

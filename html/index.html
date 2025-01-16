@@ -168,17 +168,18 @@
 <body>
     <header>
         <h1>Welcome to Meowmasters</h1>
-        <div class="tabs">
-            <div class="tab" onclick="showTab('games')">Meowmasters Games</div>
-            <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
-            <div class="tab" onclick="showTab('links')">Meowmasters Links</div>
-        </div>
+        <nav class="tabs">
+            <div class="tab">Meowmasters Games</div>
+            <div class="tab">Meowmasters Library</div>
+            <div class="tab">Meowmasters Links</div>
+        </nav>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
+            <input type="text" id="searchInput" placeholder="Search for a game...">
+            <div class="search-results" id="search-results"></div>
         </div>
     </header>
     <div id="games" class="content active">
-        <div class="game-container" id="gameContainer"></div>
+        <div class="game-container" id="game-container"></div>
     </div>
     <div id="library" class="content">
         <h2 class="center">Meowmasters Library</h2>
@@ -220,65 +221,7 @@
         <button class="close-btn" onclick="closeGame()">Close</button>
         <iframe id="gameFrame"></iframe>
     </div>
-
-    <script>
-        let allGames = [];
-
-        async function fetchGames() {
-            try {
-                const response = await fetch('games.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                allGames = await response.json();
-                displayGames(allGames);
-            } catch (error) {
-                console.error('Error fetching games:', error);
-            }
-        }
-
-        function displayGames(games) {
-            const gameContainer = document.getElementById('gameContainer');
-            gameContainer.innerHTML = '';
-
-            games.forEach(game => {
-                const gameEmbed = document.createElement('div');
-                gameEmbed.className = 'game-embed';
-                gameEmbed.innerHTML = `
-                    <img src="${game.image}" class="game-image" onclick="openGame('${game.url}')" />
-                    <div class="game-title">${game.title}</div>
-                `;
-                gameContainer.appendChild(gameEmbed);
-            });
-        }
-
-        function filterGames() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filteredGames = allGames.filter(game => game.title.toLowerCase().includes(query));
-            displayGames(filteredGames);
-        }
-
-        function openGame(url) {
-            const iframe = document.getElementById('gameFrame');
-            iframe.src = url;
-            document.getElementById('gameSection').style.display = 'block';
-        }
-
-        function closeGame() {
-            const iframe = document.getElementById('gameFrame');
-            iframe.src = '';
-            document.getElementById('gameSection').style.display = 'none';
-        }
-
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.content');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-        }
-
-        window.onload = fetchGames;
-    </script>
+    <script type="module" src="../js/gameData.js"></script>
+    <script type="module" src="../js/script.js"></script>
 </body>
 </html>
