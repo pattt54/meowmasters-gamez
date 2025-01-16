@@ -146,6 +146,18 @@
             width: 300px;
             border: 2px solid white;
             border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .center {
