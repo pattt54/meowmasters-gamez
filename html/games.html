@@ -62,11 +62,14 @@
             border: 1px solid white;
             border-radius: 5px;
             margin: 0 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: white;
         }
 
         .tab:hover {
             background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .content {
@@ -216,7 +219,7 @@
     <header>
         <h1>Meowmaster's Games</h1>
         <div class="tabs">
-            <a href="../index.html"><div class="tab">Home</div></a>
+            <a href="../index.html" class="tab">Home</a>
         </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
@@ -241,13 +244,30 @@
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
-            setInterval(() => {
+            let rainDropCount = 0;
+            let rainDropInterval = setInterval(() => {
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
-                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`; // Slower and varied animation duration
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                 stormyBackground.appendChild(rainDrop);
-            }, 100); // New raindrop every 100ms
+
+                rainDropCount++;
+                if (rainDropCount >= 50) {
+                    clearInterval(rainDropInterval);
+                }
+            }, 50); // New raindrop every 50ms initially
+
+            // Gradually increase the speed of raindrop creation
+            setTimeout(() => {
+                rainDropInterval = setInterval(() => {
+                    const rainDrop = document.createElement('div');
+                    rainDrop.className = 'rain';
+                    rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                    rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                    stormyBackground.appendChild(rainDrop);
+                }, 25); // Speed up after 2.5 seconds
+            }, 2500); // Speed up after 2.5 seconds
         }
     </script>
 </body>
