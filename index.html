@@ -1,31 +1,59 @@
-<script>
-    function loadTabContent(tabId, url) {
-        fetch(url)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(tabId).innerHTML = data;
-            })
-            .catch(error => console.error('Error fetching tab content:', error));
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meowmasters Games</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Meowmasters</h1>
+        <div class="tabs">
+            <div class="tab" onclick="showTab('games')">Meowmasters Games</div>
+            <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
+            <div class="tab" onclick="showTab('links')">Meowmasters Links</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
+        </div>
+    </header>
+    <div id="games" class="content"></div>
+    <div id="library" class="content"></div>
+    <div id="links" class="content"></div>
 
-    function showTab(tabId) {
-        const tabs = document.querySelectorAll('.content');
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        document.getElementById(tabId).classList.add('active');
-
-        const searchBar = document.querySelector('.search-bar');
-        if (tabId === 'games') {
-            searchBar.style.display = 'block';
-        } else {
-            searchBar.style.display = 'none';
+    <script>
+        function loadTabContent(tabId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(tabId).innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching tab content:', error));
         }
-    }
 
-    window.onload = function() {
-        loadTabContent('games', 'meowgames.html');
-        loadTabContent('library', 'library.html');
-        loadTabContent('links', 'links.html');
-    }
-</script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+
+            const searchBar = document.querySelector('.search-bar');
+            if (tabId === 'games') {
+                searchBar.style.display = 'block';
+            } else {
+                searchBar.style.display = 'none';
+            }
+        }
+
+        window.onload = function() {
+            loadTabContent('games', 'meowgames.html');
+            loadTabContent('library', 'library.html');
+            loadTabContent('links', 'links.html');
+        }
+    </script>
+</body>
+</html>
