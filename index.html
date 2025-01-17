@@ -69,6 +69,11 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
+        .tab a {
+            color: white;
+            text-decoration: none;
+        }
+
         .content {
             display: none;
             position: relative;
@@ -217,8 +222,8 @@
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
             <a href="html/games.html"><div class="tab">Meowmasters Games</div></a>
-            <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
-            <div class="tab" onclick="showTab('links')">Meowmasters Links</div>
+            <a href="#library"><div class="tab">Meowmasters Library</div></a>
+            <a href="#links"><div class="tab">Meowmasters Links</div></a>
         </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
@@ -270,7 +275,9 @@
 
     <script>
         window.onload = function() {
-            createRain();
+            setTimeout(() => {
+                createRain();
+            }, 3000); // Wait 3 seconds before starting rain
         }
 
         function createRain() {
@@ -287,6 +294,14 @@
                     clearInterval(rainDropInterval);
                 }
             }, 100); // New raindrop every 100ms
+        }
+
+        function showTab(tabId) {
+            const tabs = document.getElementsByClassName('content');
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
         }
     </script>
 </body>
