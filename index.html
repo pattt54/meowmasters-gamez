@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: left;
-            overflow: hidden; /* Hide scrollbars for full-screen effect */
+            overflow: auto; /* Ensure page is scrollable */
         }
 
         #stormy-background {
@@ -23,24 +23,6 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
-        }
-
-        .cloud {
-            position: absolute;
-            background: radial-gradient(circle, #4b0082, #2e004e);
-            width: 200px;
-            height: 100px;
-            border-radius: 50%;
-            animation: moveClouds 20s linear infinite;
-        }
-
-        @keyframes moveClouds {
-            0% {
-                left: -200px;
-            }
-            100% {
-                left: 100%;
-            }
         }
 
         .rain {
@@ -264,8 +246,41 @@
     <div id="games" class="content active">
         <div class="game-container" id="gameContainer"></div>
     </div>
-    <div id="library" class="content"></div>
-    <div id="links" class="content"></div>
+    <div id="library" class="content">
+        <h2 class="center">Meowmasters Library</h2>
+        <h3 class="center">Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
+        <img src="assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink center">
+        <p class="center fancy-border">Every once in a while I will post another Meow file, here are all of them to date:</p>
+        <ul>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow I:</span> (Waterfox) permanently down</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow II:</span> Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
+                (GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target="_blank" href="https://heroicgameslauncher.com/">THIS WEBSITE</a>)
+                <ol>How to use it?
+                <li>Go <a target="_blank" href="https://steamunlocked.net/">here</a> to download any Steam game for free.</li> 
+                <li>Expand the Zip file and then find the .exe file.</li>
+                <li>Go to Heroic and press add game, then press select .exe file.</li></ol>
+                Multiplayer does not work from steam unlocked.
+                Sometimes an error message comes up, usually it still works and you can X out of it.
+                <a target="_blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
+                These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my gamefile library (work in progress).
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow III:</span> Browser, pretty bad to use not recommended (absolute dogwater)</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IV:</span> Minecraft launcher
+                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow V:</span> one of the best browsers that I have ever used, recommended.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VI:</span> stream movies and TV shows you want with this app.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VII:</span> Working version of Steam, you can play windows games with multiplayer.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VIII:</span> how to play larger games.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IX:</span> how to play PolyTrack, without a browser!!</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow X:</span> Meowmasters game library, fun games for open blocks (do not play during class).</li>
+            <li class="meow-item fancy-border"><span class="meow-title">MeowXI:</span> Good tool for note taking and flashcard making.</li>
+        </ul>
+    </div>
+    <div id="links" class="content">
+        <h2>Meowmasters Links</h2>
+        <p>Useful links and resources related to Meowmasters.</p>
+    </div>
 
     <div id="gameSection">
         <button class="close-btn" onclick="closeGame()">Close</button>
@@ -338,21 +353,8 @@
 
         window.onload = function() {
             fetchGames();
-            createStorm();
             createRain();
             createLightning();
-        }
-
-        function createStorm() {
-            const stormyBackground = document.getElementById('stormy-background');
-            for (let i = 0; i < 10; i++) {
-                const cloud = document.createElement('div');
-                cloud.className = 'cloud';
-                cloud.style.top = `${Math.random() * window.innerHeight}px`;
-                cloud.style.left = `${Math.random() * window.innerWidth}px`;
-                cloud.style.animationDuration = `${20 + Math.random() * 30}s`;
-                stormyBackground.appendChild(cloud);
-            }
         }
 
         function createRain() {
