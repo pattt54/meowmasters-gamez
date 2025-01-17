@@ -42,25 +42,6 @@
             }
         }
 
-        .lightning {
-            position: absolute;
-            width: 2px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9);
-            animation: flash 0.2s linear infinite;
-            display: none;
-        }
-
-        @keyframes flash {
-            0%, 100% {
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-        }
-
         header {
             padding: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -235,8 +216,7 @@
     <header>
         <h1>Meowmaster's Games</h1>
         <div class="tabs">
-            <a href="index.html"><div class="tab">Home</div></a>
-            <a href="games.html"><div class="tab">Games</div></a>
+            <a href="../index.html"><div class="tab">Home</div></a>
         </div>
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
@@ -257,32 +237,17 @@
     <script>
         window.onload = function() {
             createRain();
-            createLightning();
         }
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
-            for (let i = 0; i < 50; i++) { // Reduced number of raindrops
+            setInterval(() => {
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
                 rainDrop.style.animationDuration = `${1.5 + Math.random()}s`; // Slower and varied animation duration
                 stormyBackground.appendChild(rainDrop);
-            }
-        }
-
-        function createLightning() {
-            const stormyBackground = document.getElementById('stormy-background');
-            setInterval(() => {
-                const lightning = document.createElement('div');
-                lightning.className = 'lightning';
-                lightning.style.left = `${Math.random() * window.innerWidth}px`;
-                lightning.style.height = `${100 + Math.random() * 200}px`;
-                stormyBackground.appendChild(lightning);
-                setTimeout(() => {
-                    lightning.remove();
-                }, 200);
-            }, Math.random() * 5000 + 2000); // Random lightning every 2-7 seconds
+            }, 100); // New raindrop every 100ms
         }
     </script>
 </body>
