@@ -30,7 +30,7 @@
             width: 2px;
             height: 10px;
             background: rgba(255, 255, 255, 0.6);
-            animation: fall 1s linear infinite;
+            animation: fall 2s linear infinite; /* Slower animation duration */
         }
 
         @keyframes fall {
@@ -359,11 +359,11 @@
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
-            for (let i = 0; i < 100; i++) {
+            for (let i = 0; i < 50; i++) { // Reduced number of raindrops
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
-                rainDrop.style.animationDuration = `${0.5 + Math.random()}s`;
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`; // Slower and varied animation duration
                 stormyBackground.appendChild(rainDrop);
             }
         }
