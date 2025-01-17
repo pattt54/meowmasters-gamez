@@ -267,10 +267,20 @@
             }
         }
 
+        function loadTabContent(tabId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(tabId).innerHTML = data;
+                })
+                .catch(error => console.error('Error fetching tab content:', error));
+        }
+
         window.onload = function() {
             loadTabContent('games', 'games.html');
             loadTabContent('library', 'library.html');
             loadTabContent('links', 'links.html');
+            fetchGames();
         }
     </script>
 </body>
