@@ -235,7 +235,7 @@
     <header>
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
-            <div class="tab" onclick="showTab('games')">Meowmasters Games</div>
+            <a href="html/games.html"><div class="tab">Meowmasters Games</div></a>
             <div class="tab" onclick="showTab('library')">Meowmasters Library</div>
             <div class="tab" onclick="showTab('links')">Meowmasters Links</div>
         </div>
@@ -288,71 +288,7 @@
     </div>
 
     <script>
-        let allGames = [];
-
-        async function fetchGames() {
-            try {
-                const response = await fetch('games.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                allGames = await response.json();
-                displayGames(allGames);
-            } catch (error) {
-                console.error('Error fetching games:', error);
-            }
-        }
-
-        function displayGames(games) {
-            const gameContainer = document.getElementById('gameContainer');
-            gameContainer.innerHTML = '';
-
-            games.forEach(game => {
-                const gameEmbed = document.createElement('div');
-                gameEmbed.className = 'game-embed';
-                gameEmbed.innerHTML = `
-                    <img src="${game.image}" class="game-image" onclick="openGame('${game.url}')" />
-                    <div class="game-title">${game.title}</div>
-                `;
-                gameContainer.appendChild(gameEmbed);
-            });
-        }
-
-        function filterGames() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filteredGames = allGames.filter(game => game.title.toLowerCase().includes(query));
-            displayGames(filteredGames);
-        }
-
-        function openGame(url) {
-            const iframe = document.getElementById('gameFrame');
-            iframe.src = url;
-            document.getElementById('gameSection').style.display = 'block';
-        }
-
-        function closeGame() {
-            const iframe = document.getElementById('gameFrame');
-            iframe.src = '';
-            document.getElementById('gameSection').style.display = 'none';
-        }
-
-        function showTab(tabId) {
-            const tabs = document.querySelectorAll('.content');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.getElementById(tabId).classList.add('active');
-
-            const searchBar = document.querySelector('.search-bar');
-            if (tabId === 'games') {
-                searchBar.style.display = 'block';
-            } else {
-                searchBar.style.display = 'none';
-            }
-        }
-
         window.onload = function() {
-            fetchGames();
             createRain();
             createLightning();
         }
