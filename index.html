@@ -62,11 +62,12 @@
             border: 1px solid white;
             border-radius: 5px;
             margin: 0 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .tab:hover {
             background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
         }
 
         .tab a {
@@ -82,18 +83,6 @@
 
         .active {
             display: block;
-        }
-
-        .search-bar {
-            margin: 20px 0;
-        }
-
-        input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            border-radius: 5px;
-            border: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .game-container {
@@ -222,11 +211,8 @@
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
             <a href="html/games.html"><div class="tab">Meowmasters Games</div></a>
-            <a href="#library"><div class="tab">Meowmasters Library</div></a>
-            <a href="#links"><div class="tab">Meowmasters Links</div></a>
-        </div>
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
+            <a href="#library"><div class="tab" onclick="showTab('library')">Meowmasters Library</div></a>
+            <a href="#links"><div class="tab" onclick="showTab('links')">Meowmasters Links</div></a>
         </div>
     </header>
     <div id="games" class="content active">
@@ -282,18 +268,28 @@
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
+            let rainDropCount = 0;
             let rainDropInterval = setInterval(() => {
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
-                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`; // Slower and varied animation duration
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                 stormyBackground.appendChild(rainDrop);
 
-                // Stop after 50 raindrops
-                if (stormyBackground.getElementsByClassName('rain').length >= 50) {
+                rainDropCount++;
+                if (rainDropCount >= 50) {
                     clearInterval(rainDropInterval);
                 }
-            }, 100); // New raindrop every 100ms
+            }, 500); // New raindrop every 500ms initially
+
+            // Gradually increase the speed of raindrop creation
+            setTimeout(() => rainDropInterval = setInterval(() => {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                stormyBackground.appendChild(rainDrop);
+            }, 100), 5000); // Speed up after 5 seconds
         }
 
         function showTab(tabId) {
