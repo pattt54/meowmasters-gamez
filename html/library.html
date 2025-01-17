@@ -1,1 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meowmasters Library</title>
+    <style>
+        body {
+            background-color: #6a0dad;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            overflow: auto; /* Ensure page is scrollable */
+        }
 
+        #stormy-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            animation: fall 2s linear infinite; /* Slower animation duration */
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        header {
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .tab a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .game-embed {
+            margin: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .game-embed:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .game-title {
+            margin: 10px 0;
+        }
+
+        #gameSection {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+
+        #gameFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 15;
+        }
+
+        a {
+            color: #d8b4fe;
+        }
+
+        .meow-item {
+            border: 2px solid white;
+            border-radius: 10px;
+            margin: 20px 0;
+            padding: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .meow-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .meow-title {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .meowmasterthink {
+            width: 300px;
+            border: 2px solid white;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .fancy-border {
+            border: 5px solid #d8b4fe;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .fancy-border:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="stormy-background"></div>
+
+    <header>
+        <h1>Welcome to Meowmasters</h1>
+        <div class="tabs">
+            <a href="../index.html"><div class="tab">Home</div></a>
+            <a href="games.html"><div class="tab">Meowmasters Games</div></a>
+            <a href="#library"><div class="tab" onclick="showTab('library')">Meowmasters Library</div></a>
+            <a href="#links"><div class="tab" onclick="showTab('links')">Meowmasters Links</div></a>
+        </div>
+    </header>
+    <div id="library" class="content active">
+        <h2 class="center">Meowmasters Library</h2>
+        <h3 class="center">Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
+        <img src="../assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink center">
+        <p class="center fancy-border">Every once in a while I will post another Meow file, here are all of them to date:</p>
+        <ul>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow I:</span> (Waterfox) permanently down</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow II:</span> Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
+                (GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target="_blank" href="https://heroicgameslauncher.com/">THIS WEBSITE</a>)
+                <ol>How to use it?
+                <li>Go <a target="_blank" href="https://steamunlocked.net/">here</a> to download any Steam game for free.</li> 
+                <li>Expand the Zip file and then find the .exe file.</li>
+                <li>Go to Heroic and press add game, then press select .exe file.</li></ol>
+                Multiplayer does not work from steam unlocked.
+                Sometimes an error message comes up, usually it still works and you can X out of it.
+                <a target="_blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
+                These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my gamefile library (work in progress).
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow III:</span> Browser, pretty bad to use not recommended (absolute dogwater)</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IV:</span> Minecraft launcher
+                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow V:</span> one of the best browsers that I have ever used, recommended.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VI:</span> stream movies and TV shows you want with this app.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VII:</span> Working version of Steam, you can play windows games with multiplayer.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VIII:</span> how to play larger games.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IX:</span> how to play PolyTrack, without a browser!!</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow X:</span> Meowmasters game library, fun games for open blocks (do not play during class).</li>
+            <li class="meow-item fancy-border"><span class="meow-title">MeowXI:</span> Good tool for note taking and flashcard making.</li>
+        </ul>
+    </div>
+    <div id="links" class="content">
+        <h2>Meowmasters Links</h2>
+        <p>Useful links and resources related to Meowmasters.</p>
+    </div>
+
+    <div id="gameSection">
+        <button class="close-btn" onclick="closeGame()">Close</button>
+        <iframe id="gameFrame"></iframe>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(() => {
+                createRain();
+            }, 3000); // Wait 3 seconds before starting rain
+        }
+
+        function createRain() {
+            const stormyBackground = document.getElementById('stormy-background');
+            let rainDropCount = 0;
+            let rainDropInterval = setInterval(() => {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                stormyBackground.appendChild(rainDrop);
+
+                rainDropCount++;
+                if (rainDropCount >= 50) {
+                    clearInterval(rainDropInterval);
+                }
+            }, 500); // New raindrop every 500ms initially
+
+            // Gradually increase the speed of raindrop creation
+            setTimeout(() => rainDropInterval = setInterval(() => {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                stormyBackground.appendChild(rainDrop);
+            }, 100), 5000); // Speed up after 5 seconds
+        }
+
+        function showTab(tabId) {
+            const tabs = document.getElementsByClassName('content');
+            for (let tab of tabs) {
+                tab.classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function closeGame() {
+            document.getElementById('gameSection').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
