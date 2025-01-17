@@ -194,7 +194,9 @@
             <input type="text" id="searchInput" placeholder="Search for a game..." onkeyup="filterGames()">
         </div>
     </header>
-    <div id="games" class="content"></div>
+    <div id="games" class="content active">
+        <div class="game-container" id="gameContainer"></div>
+    </div>
     <div id="library" class="content"></div>
     <div id="links" class="content"></div>
 
@@ -277,7 +279,6 @@
         }
 
         window.onload = function() {
-            loadTabContent('games', 'games.html');
             loadTabContent('library', 'library.html');
             loadTabContent('links', 'links.html');
             fetchGames();
