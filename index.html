@@ -11,7 +11,72 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: left; /* Align text to the left */
+            text-align: left;
+            overflow: hidden; /* Hide scrollbars for full-screen effect */
+        }
+
+        #stormy-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .cloud {
+            position: absolute;
+            background: radial-gradient(circle, #4b0082, #2e004e);
+            width: 200px;
+            height: 100px;
+            border-radius: 50%;
+            animation: moveClouds 20s linear infinite;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            animation: fall 1s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        .lightning {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.9);
+            animation: flash 0.2s linear infinite;
+            display: none;
+        }
+
+        @keyframes flash {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
         }
 
         header {
@@ -19,7 +84,7 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
             position: relative;
-            z-index: 1; /* Ensure header stays above the blobs */
+            z-index: 1;
         }
 
         .tabs {
@@ -44,7 +109,7 @@
         .content {
             display: none;
             position: relative;
-            z-index: 1; /* Ensure content stays above the blobs */
+            z-index: 1;
         }
 
         .active {
@@ -125,20 +190,20 @@
         }
 
         a {
-            color: #d8b4fe; /* Very whiteish purple */
+            color: #d8b4fe;
         }
 
         .meow-item {
             border: 2px solid white;
             border-radius: 10px;
-            margin: 20px 0; /* Added space between items */
+            margin: 20px 0;
             padding: 10px;
-            transition: transform 0.3s, box-shadow 0.3s; /* Added transition for hover effects */
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .meow-item:hover {
-            transform: scale(1.05); /* Scale effect on hover */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Box shadow effect on hover */
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .meow-title {
@@ -183,6 +248,8 @@
     </style>
 </head>
 <body>
+    <div id="stormy-background"></div>
+
     <header>
         <h1>Welcome to Meowmasters</h1>
         <div class="tabs">
@@ -197,41 +264,8 @@
     <div id="games" class="content active">
         <div class="game-container" id="gameContainer"></div>
     </div>
-    <div id="library" class="content">
-        <h2 class="center">Meowmasters Library</h2>
-        <h3 class="center">Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
-        <img src="assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink center">
-        <p class="center fancy-border">Every once in a while I will post another Meow file, here are all of them to date:</p>
-        <ul>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow I:</span> (Waterfox) permanently down</li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow II:</span> Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
-                (GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target="_blank" href="https://heroicgameslauncher.com/">THIS WEBSITE</a>)
-                <ol>How to use it?
-                <li>Go <a target="_blank" href="https://steamunlocked.net/">here</a> to download any Steam game for free.</li> 
-                <li>Expand the Zip file and then find the .exe file.</li>
-                <li>Go to Heroic and press add game, then press select .exe file.</li></ol>
-                Multiplayer does not work from steam unlocked.
-                Sometimes an error message comes up, usually it still works and you can X out of it.
-                <a target="_blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
-                These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my gamefile library (work in progress).
-            </li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow III:</span> Browser, pretty bad to use not recommended (absolute dogwater): <a target="blank" href="https://drive.google.com/file/d/1RBr4YtbCA8URHb0K_gMqGwCEdePQMi9h/view">Meow III file</a></li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow IV:</span> <a target="blank" href="https://drive.google.com/file/d/1DYgxm6JMannHRAT0fsMqDi2FUW4x5t6E/view">Minecraft launcher</a>:
-                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
-            </li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow V:</span> one of the best browsers that I have ever used, recommended. <a target="blank" href="https://drive.google.com/file/d/179A5UCzxki9G37D7IKmgEdlkFy8nDtzQ/view">Meow V file</a>.</li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow VI:</span> stream movies and TV shows you want with this app. <a target="blank" href="https://drive.google.com/file/d/1jWnEpjaW_sjxYfBZfqyrsnLnbVndfsuI/view">Meow VI file</a> How to use it? Go to this <a target="blank" href="https://docs.google.com/document/d/1bpiJw-jPFkaCg_2aqu42Mn92cz0GTAwDszv64TuJDhw/edit?tab=t.0">google doc</a></li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow VII:</span> Working version of Steam, you can play windows games with multiplayer. After a little while of using this, I found that it is laggy, most games dont work with it (literally almost every game).</li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow VIII:</span> how to play larger games: <a target="blank" href="https://docs.google.com/document/d/1vdBtA8GKq1ZhOkiY1rTyDhqb4COwCAtZhbNgtCLGWrg/edit?tab=t.0">Tutorial</a></li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow IX:</span> how to play PolyTrack, without a browser!! Just download and run this file (it is the app version, it takes a little while to load): <a target="blank" href="https://drive.google.com/file/d/1h6sIpMRW-pRB6p1OKSet0fyP_JUQLQX8/view">PolyTrack file</a></li>
-            <li class="meow-item fancy-border"><span class="meow-title">Meow X:</span> Meowmasters game library, fun games for open blocks (do not play during class): <a target="blank" href="https://docs.google.com/document/d/1l9yWTc3fLd-9nWYYLCuPEtOBfPE5N4P3NHeZTbM1yw0/edit?tab=t.0">Game Library</a></li>
-            <li class="meow-item fancy-border"><span class="meow-title">MeowXI:</span> Good tool for note taking and flashcard making: <a target="blank" href="https://drive.google.com/file/d/1oDNzDDCsi96FlWcBFHYFuhzuC1-S2vlz/view">Meow XI file</a></li>
-        </ul>
-    </div>
-    <div id="links" class="content">
-        <h2>Meowmasters Links</h2>
-        <p>Useful links and resources related to Meowmasters.</p>
-    </div>
+    <div id="library" class="content"></div>
+    <div id="links" class="content"></div>
 
     <div id="gameSection">
         <button class="close-btn" onclick="closeGame()">Close</button>
@@ -302,7 +336,49 @@
             }
         }
 
-        window.onload = fetchGames;
+        window.onload = function() {
+            fetchGames();
+            createStorm();
+            createRain();
+            createLightning();
+        }
+
+        function createStorm() {
+            const stormyBackground = document.getElementById('stormy-background');
+            for (let i = 0; i < 10; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.style.top = `${Math.random() * window.innerHeight}px`;
+                cloud.style.left = `${Math.random() * window.innerWidth}px`;
+                cloud.style.animationDuration = `${20 + Math.random() * 30}s`;
+                stormyBackground.appendChild(cloud);
+            }
+        }
+
+        function createRain() {
+            const stormyBackground = document.getElementById('stormy-background');
+            for (let i = 0; i < 100; i++) {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                rainDrop.style.animationDuration = `${0.5 + Math.random()}s`;
+                stormyBackground.appendChild(rainDrop);
+            }
+        }
+
+        function createLightning() {
+            const stormyBackground = document.getElementById('stormy-background');
+            setInterval(() => {
+                const lightning = document.createElement('div');
+                lightning.className = 'lightning';
+                lightning.style.left = `${Math.random() * window.innerWidth}px`;
+                lightning.style.height = `${100 + Math.random() * 200}px`;
+                stormyBackground.appendChild(lightning);
+                setTimeout(() => {
+                    lightning.remove();
+                }, 200);
+            }, Math.random() * 5000 + 2000); // Random lightning every 2-7 seconds
+        }
     </script>
 </body>
 </html>
