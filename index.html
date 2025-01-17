@@ -197,8 +197,41 @@
     <div id="games" class="content active">
         <div class="game-container" id="gameContainer"></div>
     </div>
-    <div id="library" class="content"></div>
-    <div id="links" class="content"></div>
+    <div id="library" class="content">
+        <h2 class="center">Meowmasters Library</h2>
+        <h3 class="center">Welcome to the Meowmasters Library. Browse through our collection of resources.</h3>
+        <img src="assets/images/meowmasterthink.jpeg" alt="Meowmaster Think" class="meowmasterthink center">
+        <p class="center fancy-border">Every once in a while I will post another Meow file, here are all of them to date:</p>
+        <ul>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow I:</span> (Waterfox) permanently down</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow II:</span> Heroic Games launcher (with this you can launch any steam game even windows games on Mac)
+                (GOOGLE DRIVE FILE IS NOT WORKING, TRYING TO FIX IT, HEROIC CAN BE DOWNLOADED FROM THE INTERNET AT <a target="_blank" href="https://heroicgameslauncher.com/">THIS WEBSITE</a>)
+                <ol>How to use it?
+                <li>Go <a target="_blank" href="https://steamunlocked.net/">here</a> to download any Steam game for free.</li> 
+                <li>Expand the Zip file and then find the .exe file.</li>
+                <li>Go to Heroic and press add game, then press select .exe file.</li></ol>
+                Multiplayer does not work from steam unlocked.
+                Sometimes an error message comes up, usually it still works and you can X out of it.
+                <a target="_blank" href="https://itch.io/">itchio</a> has some good off brand games as well, but not all are free. (multiplayer works)
+                These websites are both blocked so I would recommend going to them on your personal computer. You can get games from my gamefile library (work in progress).
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow III:</span> Browser, pretty bad to use not recommended (absolute dogwater): <a target="blank" href="https://drive.google.com/file/d/1RBr4YtbCA8URHb0K_gMqGwCEdePQMi9h/view">Meow III file</a></li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IV:</span> <a target="blank" href="https://drive.google.com/file/d/1DYgxm6JMannHRAT0fsMqDi2FUW4x5t6E/view">Minecraft launcher</a>:
+                The last time I tried using this it didn't work on our laptops. You can use Eaglecraft on one of many unblocked games sites
+            </li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow V:</span> one of the best browsers that I have ever used, recommended. <a target="blank" href="https://drive.google.com/file/d/179A5UCzxki9G37D7IKmgEdlkFy8nDtzQ/view">Meow V file</a>.</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VI:</span> stream movies and TV shows you want with this app. <a target="blank" href="https://drive.google.com/file/d/1jWnEpjaW_sjxYfBZfqyrsnLnbVndfsuI/view">Meow VI file</a> How to use it? Go to this <a target="blank" href="https://docs.google.com/document/d/1bpiJw-jPFkaCg_2aqu42Mn92cz0GTAwDszv64TuJDhw/edit?tab=t.0">google doc</a></li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VII:</span> Working version of Steam, you can play windows games with multiplayer. After a little while of using this, I found that it is laggy, most games dont work with it (literally almost every game).</li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow VIII:</span> how to play larger games: <a target="blank" href="https://docs.google.com/document/d/1vdBtA8GKq1ZhOkiY1rTyDhqb4COwCAtZhbNgtCLGWrg/edit?tab=t.0">Tutorial</a></li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow IX:</span> how to play PolyTrack, without a browser!! Just download and run this file (it is the app version, it takes a little while to load): <a target="blank" href="https://drive.google.com/file/d/1h6sIpMRW-pRB6p1OKSet0fyP_JUQLQX8/view">PolyTrack file</a></li>
+            <li class="meow-item fancy-border"><span class="meow-title">Meow X:</span> Meowmasters game library, fun games for open blocks (do not play during class): <a target="blank" href="https://docs.google.com/document/d/1l9yWTc3fLd-9nWYYLCuPEtOBfPE5N4P3NHeZTbM1yw0/edit?tab=t.0">Game Library</a></li>
+            <li class="meow-item fancy-border"><span class="meow-title">MeowXI:</span> Good tool for note taking and flashcard making: <a target="blank" href="https://drive.google.com/file/d/1oDNzDDCsi96FlWcBFHYFuhzuC1-S2vlz/view">Meow XI file</a></li>
+        </ul>
+    </div>
+    <div id="links" class="content">
+        <h2>Meowmasters Links</h2>
+        <p>Useful links and resources related to Meowmasters.</p>
+    </div>
 
     <div id="gameSection">
         <button class="close-btn" onclick="closeGame()">Close</button>
@@ -269,20 +302,7 @@
             }
         }
 
-        function loadTabContent(tabId, url) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(tabId).innerHTML = data;
-                })
-                .catch(error => console.error('Error fetching tab content:', error));
-        }
-
-        window.onload = function() {
-            loadTabContent('library', 'library.html');
-            loadTabContent('links', 'links.html');
-            fetchGames();
-        }
+        window.onload = fetchGames;
     </script>
 </body>
 </html>
