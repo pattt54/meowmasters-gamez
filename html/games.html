@@ -8,7 +8,7 @@
         body {
             background-color: #6a0dad;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             text-align: left;
@@ -23,14 +23,15 @@
             height: 100%;
             overflow: hidden;
             z-index: -1;
+            opacity: 0.5; /* Make the rain less distracting */
         }
 
         .rain {
             position: absolute;
             width: 2px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.6);
-            animation: fall 2s linear infinite; /* Slower animation duration */
+            background: rgba(255, 255, 255, 0.3);
+            animation: fall 2.5s linear infinite; /* Slower animation duration */
         }
 
         @keyframes fall {
@@ -48,6 +49,8 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #d8b4fe;
         }
 
         .tabs {
@@ -108,8 +111,9 @@
             overflow: hidden;
             width: calc(25% - 20px);
             box-sizing: border-box;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .game-embed:hover {
@@ -120,10 +124,12 @@
         .game-image {
             width: 100%;
             height: auto;
+            border-bottom: 2px solid #d8b4fe;
         }
 
         .game-title {
             margin: 10px 0;
+            font-weight: bold;
         }
 
         #gameSection {
