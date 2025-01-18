@@ -30,7 +30,7 @@
             width: 2px;
             height: 10px;
             background: rgba(255, 255, 255, 0.6);
-            animation: fall 2s linear infinite;
+            animation: fall 1s linear infinite;
         }
 
         @keyframes fall {
@@ -91,8 +91,8 @@
         }
 
         .image-spot {
-            width: 80%;
-            height: 300px;
+            width: 60%;
+            height: 200px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -131,8 +131,17 @@
 
         .overlay-text {
             color: white;
-            font-size: 24px;
+            font-size: 18px;
             text-align: center;
+        }
+
+        .text-spot {
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
         }
 
         .center {
@@ -175,17 +184,26 @@
                     <div class="overlay-text">Image 1 Description</div>
                 </div>
             </div>
+            <div class="text-spot">
+                <p>Text content for Image 1. Add any additional information here.</p>
+            </div>
             <div class="image-spot">
                 <img src="path/to/your/image2.jpg" alt="Image 2">
                 <div class="overlay">
                     <div class="overlay-text">Image 2 Description</div>
                 </div>
             </div>
+            <div class="text-spot">
+                <p>Text content for Image 2. Add any additional information here.</p>
+            </div>
             <div class="image-spot">
                 <img src="path/to/your/image3.jpg" alt="Image 3">
                 <div class="overlay">
                     <div class="overlay-text">Image 3 Description</div>
                 </div>
+            </div>
+            <div class="text-spot">
+                <p>Text content for Image 3. Add any additional information here.</p>
             </div>
         </div>
     </div>
@@ -196,7 +214,7 @@
         <p>Useful links and resources related to Meowmasters.</p>
     </div>
 
-    <div id="gameSection">
+    <div id="gameSection" class="content">
         <button class="close-btn" onclick="closeGame()">Close</button>
         <iframe id="gameFrame"></iframe>
     </div>
@@ -208,29 +226,13 @@
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
-            let rainDropCount = 0;
-            let rainDropInterval = setInterval(() => {
+            for (let i = 0; i < 500; i++) {
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
                 rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                 stormyBackground.appendChild(rainDrop);
-
-                rainDropCount++;
-                if (rainDropCount >= 50) {
-                    clearInterval(rainDropInterval);
-                }
-            }, 50);
-
-            setTimeout(() => {
-                rainDropInterval = setInterval(() => {
-                    const rainDrop = document.createElement('div');
-                    rainDrop.className = 'rain';
-                    rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
-                    rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
-                    stormyBackground.appendChild(rainDrop);
-                }, 25);
-            }, 2500);
+            }
         }
 
         function showTab(tabId) {
