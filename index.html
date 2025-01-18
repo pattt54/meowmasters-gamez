@@ -30,7 +30,7 @@
             width: 2px;
             height: 10px;
             background: rgba(255, 255, 255, 0.6);
-            animation: fall 1s linear infinite;
+            animation: fall 2s linear infinite; /* Slower animation duration */
         }
 
         @keyframes fall {
@@ -92,13 +92,14 @@
 
         .image-spot {
             width: 30%;
-            height: 200px;
+            height: 300px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .image-spot:hover {
@@ -178,30 +179,30 @@
     </header>
     <div id="home" class="content active">
         <div class="home-container">
-            <div class="image-spot">
+            <a href="link1.html" class="image-spot">
                 <img src="path/to/your/image1.jpg" alt="Image 1">
                 <div class="overlay">
                     <div class="overlay-text">Image 1 Description</div>
                 </div>
-            </div>
+            </a>
             <div class="text-spot">
                 <p>Text content for Image 1. Add any additional information here.</p>
             </div>
-            <div class="image-spot">
+            <a href="link2.html" class="image-spot">
                 <img src="path/to/your/image2.jpg" alt="Image 2">
                 <div class="overlay">
                     <div class="overlay-text">Image 2 Description</div>
                 </div>
-            </div>
+            </a>
             <div class="text-spot">
                 <p>Text content for Image 2. Add any additional information here.</p>
             </div>
-            <div class="image-spot">
+            <a href="link3.html" class="image-spot">
                 <img src="path/to/your/image3.jpg" alt="Image 3">
                 <div class="overlay">
                     <div class="overlay-text">Image 3 Description</div>
                 </div>
-            </div>
+            </a>
             <div class="text-spot">
                 <p>Text content for Image 3. Add any additional information here.</p>
             </div>
@@ -221,18 +222,35 @@
 
     <script>
         window.onload = function() {
-            createRain();
+            createRain(); // Start rain immediately when the page loads
         }
 
         function createRain() {
             const stormyBackground = document.getElementById('stormy-background');
-            for (let i = 0; i < 500; i++) {
+            let rainDropCount = 0;
+            let rainDropInterval = setInterval(() => {
                 const rainDrop = document.createElement('div');
                 rainDrop.className = 'rain';
                 rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
                 rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                 stormyBackground.appendChild(rainDrop);
-            }
+
+                rainDropCount++;
+                if (rainDropCount >= 50) {
+                    clearInterval(rainDropInterval);
+                }
+            }, 50); // New raindrop every 50ms initially
+
+            // Gradually increase the speed of raindrop creation
+            setTimeout(() => {
+                rainDropInterval = setInterval(() => {
+                    const rainDrop = document.createElement('div');
+                    rainDrop.className = 'rain';
+                    rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                    rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                    stormyBackground.appendChild(rainDrop);
+                }, 25); // Speed up after 2.5 seconds
+            }, 2500); // Speed up after 2.5 seconds
         }
 
         function showTab(tabId) {
