@@ -30,7 +30,7 @@
             width: 2px;
             height: 10px;
             background: rgba(255, 255, 255, 0.6);
-            animation: fall 2s linear infinite; /* Slower animation duration */
+            animation: fall 2s linear infinite;
         }
 
         @keyframes fall {
@@ -84,15 +84,15 @@
 
         .home-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
             padding: 20px;
         }
 
         .image-spot {
-            width: 30%;
-            height: 300px;
+            width: 80%;
+            height: 400px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
@@ -132,12 +132,12 @@
 
         .overlay-text {
             color: white;
-            font-size: 18px;
+            font-size: 24px;
             text-align: center;
         }
 
         .text-spot {
-            width: 30%;
+            width: 80%;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
@@ -222,7 +222,7 @@
 
     <script>
         window.onload = function() {
-            createRain(); // Start rain immediately when the page loads
+            createRain();
         }
 
         function createRain() {
@@ -239,9 +239,8 @@
                 if (rainDropCount >= 50) {
                     clearInterval(rainDropInterval);
                 }
-            }, 50); // New raindrop every 50ms initially
+            }, 50);
 
-            // Gradually increase the speed of raindrop creation
             setTimeout(() => {
                 rainDropInterval = setInterval(() => {
                     const rainDrop = document.createElement('div');
@@ -249,8 +248,8 @@
                     rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
                     rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                     stormyBackground.appendChild(rainDrop);
-                }, 25); // Speed up after 2.5 seconds
-            }, 2500); // Speed up after 2.5 seconds
+                }, 25);
+            }, 2500);
         }
 
         function showTab(tabId) {
