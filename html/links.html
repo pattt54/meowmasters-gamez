@@ -29,8 +29,8 @@
             position: absolute;
             width: 2px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.6);
-            animation: fall 2s linear infinite;
+            background: rgba(255, 255, 255, 0.3);
+            animation: fall 2.5s linear infinite;
         }
 
         @keyframes fall {
@@ -48,6 +48,8 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #d8b4fe;
         }
 
         .tabs {
@@ -88,6 +90,8 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
+            z-index: 2;
+            position: relative;
         }
 
         .link-spot {
@@ -98,7 +102,7 @@
             overflow: hidden;
             position: relative;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -108,6 +112,7 @@
 
         .link-spot:hover {
             transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .link-spot a {
