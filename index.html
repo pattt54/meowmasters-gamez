@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             text-align: left;
-            overflow: auto; /* Ensure page is scrollable */
+            overflow: auto;
         }
 
         #stormy-background {
@@ -30,7 +30,7 @@
             width: 2px;
             height: 10px;
             background: rgba(255, 255, 255, 0.6);
-            animation: fall 2s linear infinite; /* Slower animation duration */
+            animation: fall 2s linear infinite;
         }
 
         @keyframes fall {
@@ -82,27 +82,61 @@
             display: block;
         }
 
-        .game-container {
+        .home-container {
             display: flex;
-            justify-content: center;
-            margin: 20px;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
         }
 
-        #gameSection {
-            display: none;
-            position: fixed;
+        .image-spot {
+            width: 80%;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .image-spot:hover {
+            transform: scale(1.05);
+        }
+
+        .image-spot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-spot .overlay {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 10;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s;
         }
 
-        #gameFrame {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .image-spot:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
         }
 
         .close-btn {
@@ -120,10 +154,6 @@
         a {
             color: #d8b4fe;
         }
-
-        .center {
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -137,8 +167,27 @@
             <a href="html/links.html" class="tab">Meowmasters Links</a>
         </div>
     </header>
-    <div id="games" class="content active">
-        <div class="game-container" id="gameContainer"></div>
+    <div id="home" class="content active">
+        <div class="home-container">
+            <div class="image-spot">
+                <img src="path/to/your/image1.jpg" alt="Image 1">
+                <div class="overlay">
+                    <div class="overlay-text">Image 1 Description</div>
+                </div>
+            </div>
+            <div class="image-spot">
+                <img src="path/to/your/image2.jpg" alt="Image 2">
+                <div class="overlay">
+                    <div class="overlay-text">Image 2 Description</div>
+                </div>
+            </div>
+            <div class="image-spot">
+                <img src="path/to/your/image3.jpg" alt="Image 3">
+                <div class="overlay">
+                    <div class="overlay-text">Image 3 Description</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="library" class="content">
     </div>
@@ -154,7 +203,7 @@
 
     <script>
         window.onload = function() {
-            createRain(); // Start rain immediately when the page loads
+            createRain();
         }
 
         function createRain() {
@@ -171,9 +220,8 @@
                 if (rainDropCount >= 50) {
                     clearInterval(rainDropInterval);
                 }
-            }, 50); // New raindrop every 50ms initially
+            }, 50);
 
-            // Gradually increase the speed of raindrop creation
             setTimeout(() => {
                 rainDropInterval = setInterval(() => {
                     const rainDrop = document.createElement('div');
@@ -181,8 +229,8 @@
                     rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
                     rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
                     stormyBackground.appendChild(rainDrop);
-                }, 25); // Speed up after 2.5 seconds
-            }, 2500); // Speed up after 2.5 seconds
+                }, 25);
+            }, 2500);
         }
 
         function showTab(tabId) {
