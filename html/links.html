@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meowmasters Links</title>
+    <style>
+        body {
+            background-color: #6a0dad;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            overflow: auto;
+        }
 
+        #stormy-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .rain {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            animation: fall 2s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+
+        header {
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .tab:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .content {
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .links-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .link-spot {
+            width: 45%;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .link-spot:hover {
+            transform: scale(1.05);
+        }
+
+        .link-spot a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="stormy-background"></div>
+
+    <header>
+        <h1>Meowmasters Links</h1>
+        <div class="tabs">
+            <a href="../index.html" class="tab">Home</a>
+        </div>
+    </header>
+    <div id="links" class="content active">
+        <div class="links-container">
+            <div class="link-spot"><a href="https://example1.com" target="_blank">Example Link 1</a></div>
+            <div class="link-spot"><a href="https://example2.com" target="_blank">Example Link 2</a></div>
+            <div class="link-spot"><a href="https://example3.com" target="_blank">Example Link 3</a></div>
+            <div class="link-spot"><a href="https://example4.com" target="_blank">Example Link 4</a></div>
+            <div class="link-spot"><a href="https://example5.com" target="_blank">Example Link 5</a></div>
+            <div class="link-spot"><a href="https://example6.com" target="_blank">Example Link 6</a></div>
+            <div class="link-spot"><a href="https://example7.com" target="_blank">Example Link 7</a></div>
+            <div class="link-spot"><a href="https://example8.com" target="_blank">Example Link 8</a></div>
+            <div class="link-spot"><a href="https://example9.com" target="_blank">Example Link 9</a></div>
+            <div class="link-spot"><a href="https://example10.com" target="_blank">Example Link 10</a></div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            createRain();
+        }
+
+        function createRain() {
+            const stormyBackground = document.getElementById('stormy-background');
+            let rainDropCount = 0;
+            let rainDropInterval = setInterval(() => {
+                const rainDrop = document.createElement('div');
+                rainDrop.className = 'rain';
+                rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                stormyBackground.appendChild(rainDrop);
+
+                rainDropCount++;
+                if (rainDropCount >= 50) {
+                    clearInterval(rainDropInterval);
+                }
+            }, 50);
+
+            setTimeout(() => {
+                rainDropInterval = setInterval(() => {
+                    const rainDrop = document.createElement('div');
+                    rainDrop.className = 'rain';
+                    rainDrop.style.left = `${Math.random() * window.innerWidth}px`;
+                    rainDrop.style.animationDuration = `${1.5 + Math.random()}s`;
+                    stormyBackground.appendChild(rainDrop);
+                }, 25);
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
